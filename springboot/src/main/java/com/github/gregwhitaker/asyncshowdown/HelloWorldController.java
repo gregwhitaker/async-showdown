@@ -17,6 +17,14 @@ import java.util.concurrent.FutureTask;
 public class HelloWorldController {
     private static Random RANDOM = new Random(System.currentTimeMillis());
 
+    /**
+     * Waits a random random number of milliseconds, within the specified minimum and maximum, before returning a 200 HTTP
+     * response with the body containing the string "Hello World!"
+     *
+     * @param minSleep minimum sleep time in milliseconds
+     * @param maxSleep maximum sleep time in milliseconds
+     * @return A 200 HTTP response with the body containing the string "Hello World!"
+     */
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public DeferredResult<ResponseEntity<String>> hello(@RequestParam(name = "minSleepMs", defaultValue = "500") long minSleep,
                                                         @RequestParam(name = "maxSleepMs", defaultValue = "500") long maxSleep) {
