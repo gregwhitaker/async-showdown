@@ -30,7 +30,7 @@ public class HelloWorldController {
                                                         @RequestParam(name = "maxSleepMs", defaultValue = "500") long maxSleep) {
         final DeferredResult<ResponseEntity<String>> deferredResult = new DeferredResult<>();
 
-        final FutureTask<String> helloTask = new FutureTask(new HelloTask(minSleep, maxSleep));
+        final FutureTask<String> helloTask = new FutureTask(new HelloGenerator(minSleep, maxSleep));
         Observable.from(helloTask)
                 .last()
                 .subscribeOn(Schedulers.io())
@@ -43,10 +43,10 @@ public class HelloWorldController {
     /**
      * Task that sleeps for a random amount of time, within a configurable interval, and then returns the string "Hello World!".
      */
-    class HelloTask implements Callable<String> {
+    class HelloGenerator implements Callable<String> {
         private final long duration;
 
-        public HelloTask(final long minSleep, final long maxSleep) {
+        public HelloGenerator(final long minSleep, final long maxSleep) {
             this.duration = minSleep + (long)(RANDOM.nextDouble() * (maxSleep - minSleep));
         }
 
