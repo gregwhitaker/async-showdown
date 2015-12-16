@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 import rx.Observable;
+import rx.schedulers.Schedulers;
 
 import java.util.Random;
 import java.util.concurrent.Callable;
@@ -17,13 +18,14 @@ public class HelloWorldController {
     private static Random RANDOM = new Random(System.currentTimeMillis());
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public DeferredResult<ResponseEntity<String>> hello(@RequestParam(name = "minSleep", defaultValue = "0") long minSleep,
-                                                        @RequestParam(name = "maxSleep", defaultValue = "0") long maxSleep) {
+    public DeferredResult<ResponseEntity<String>> hello(@RequestParam(name = "minSleepMs", defaultValue = "500") long minSleep,
+                                                        @RequestParam(name = "maxSleepMs", defaultValue = "500") long maxSleep) {
         final DeferredResult<ResponseEntity<String>> deferredResult = new DeferredResult<>();
 
         final FutureTask<String> helloTask = new FutureTask(new HelloTask(minSleep, maxSleep));
         Observable.from(helloTask)
                 .last()
+                .subscribeOn(Schedulers.io())
                 .subscribe(message -> deferredResult.setResult(ResponseEntity.ok(message)),
                            error -> deferredResult.setResult(ResponseEntity.status(500).body(error.getMessage())));
 
