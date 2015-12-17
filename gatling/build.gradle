@@ -1,0 +1,17 @@
+group 'com.github.gregwhitaker'
+version '1.0.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.scala-lang:scala-compiler:2.11.7')
+    compile('org.scala-lang:scala-library:2.11.7')
+    compile('io.gatling:gatling-app:2.1.7')
+    compile('io.gatling.highcharts:gatling-charts-highcharts:2.1.7')
+}

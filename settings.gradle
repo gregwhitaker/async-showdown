@@ -4,4 +4,5 @@ include 'qbit'
 include 'vertx'
 include 'springboot'
 include 'undertow'
+include 'gatling'
 
