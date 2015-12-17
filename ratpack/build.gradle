@@ -1,14 +1,31 @@
 group 'com.github.gregwhitaker'
 version '1.0.0'
 
-apply plugin: 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
 
-sourceCompatibility = 1.5
+    dependencies {
+        classpath "io.ratpack:ratpack-gradle:1.1.1"
+    }
+}
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
+apply plugin: "io.ratpack.ratpack-java"
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    runtime "org.slf4j:slf4j-simple:1.7.12"
 }
+
+mainClassName = "com.github.gregwhitaker.asyncshowdown.Application"
+
