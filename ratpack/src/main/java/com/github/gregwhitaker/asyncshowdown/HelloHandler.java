@@ -11,6 +11,13 @@ import java.util.concurrent.Callable;
 public class HelloHandler implements Handler {
     private static Random RANDOM = new Random(System.currentTimeMillis());
 
+    /**
+     * Asynchronously waits a random random number of milliseconds, within the specified minimum and maximum, before
+     * returning a 200 HTTP response with the body containing the string "Hello World!"
+     *
+     * @param ctx ratpack context
+     * @throws Exception
+     */
     @Override
     public void handle(Context ctx) throws Exception {
         MultiValueMap<String, String> queryParams = ctx.getRequest().getQueryParams();

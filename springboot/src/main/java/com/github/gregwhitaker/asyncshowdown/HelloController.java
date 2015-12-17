@@ -14,11 +14,11 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
 @RestController
-public class HelloWorldController {
+public class HelloController {
     private static Random RANDOM = new Random(System.currentTimeMillis());
 
     /**
-     * Asynchnously waits a random random number of milliseconds, within the specified minimum and maximum, before
+     * Asynchronously waits a random random number of milliseconds, within the specified minimum and maximum, before
      * returning a 200 HTTP response with the body containing the string "Hello World!"
      *
      * @param minSleep minimum sleep time in milliseconds
