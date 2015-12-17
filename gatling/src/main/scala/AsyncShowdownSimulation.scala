@@ -17,7 +17,7 @@ class AsyncShowdownSimulation extends Simulation {
   val noOfUsers      = 3000
 
   val baseURL      = "http://localhost:8080"
-  val baseName     = "rxspringboot"
+  val baseName     = "asyncshowdown"
   val requestName  = baseName + "-request"
   val scenarioName = baseName + "-scenario"
   val URI          = "/hello"
