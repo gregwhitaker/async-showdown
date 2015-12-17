@@ -37,6 +37,7 @@ public class HelloHandler implements HttpHandler {
 
         exchange.setStatusCode(200);
         exchange.getResponseSender().send(message);
+        exchange.endExchange();
     }
 
     /**
