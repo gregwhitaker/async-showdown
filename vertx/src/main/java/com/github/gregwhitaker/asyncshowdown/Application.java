@@ -1,15 +1,9 @@
 package com.github.gregwhitaker.asyncshowdown;
 
-import io.vertx.ext.web.handler.BodyHandler;
-import io.vertx.rx.java.ObservableFuture;
-import io.vertx.rx.java.ObservableHandler;
-import io.vertx.rx.java.RxHelper;
 import io.vertx.rxjava.core.AbstractVerticle;
-import io.vertx.rxjava.core.http.HttpServer;
 import io.vertx.rxjava.core.http.HttpServerRequest;
 import io.vertx.rxjava.core.http.HttpServerResponse;
 import io.vertx.rxjava.ext.web.Router;
-import io.vertx.rxjava.ext.web.RoutingContext;
 import rx.Observable;
 import rx.schedulers.Schedulers;
 
